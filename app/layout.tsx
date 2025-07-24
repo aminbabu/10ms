@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "antialiased font-sans",
+          "antialiased font-sans flex flex-col min-h-dvh overflow-x-hidden",
           geistMono.variable,
           inter.variable
         )}

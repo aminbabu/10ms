@@ -1,5 +1,7 @@
+import Section from "@/components/common/section";
+
 const Details = () => {
-  return <div>Details</div>;
+  return <Section>Details</Section>;
 };
 
 export default Details;

@@ -1,5 +1,7 @@
+import Section from "@/components/common/section";
+
 const Instructors = () => {
-  return <div>Instructors</div>;
+  return <Section>Instructors</Section>;
 };
 
 export default Instructors;

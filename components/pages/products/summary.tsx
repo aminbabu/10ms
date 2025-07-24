@@ -1,5 +1,7 @@
+import Section from "@/components/common/section";
+
 const Summary = () => {
-  return <div>Summary</div>;
+  return <Section>Summary</Section>;
 };
 
 export default Summary;
