@@ -1,23 +1,11 @@
-export interface Data {
-  slug: string;
-  id: number;
-  title: string;
-  description: string; // HTML string
-  media: Medium[];
-  checklist: Checklist[];
-  seo: Seo;
-  cta_text: CtaText;
-  sections: Section[];
-}
-
-export interface Medium {
+export interface Media {
   name: string;
   resource_type: string;
   resource_value: string;
-  thumbnail_url: string;
+  thumbnail_url?: string;
 }
 
-export interface Checklist {
+export interface CheckList {
   color: string;
   icon: string;
   id: string;
@@ -25,15 +13,7 @@ export interface Checklist {
   text: string;
 }
 
-export interface Seo {
-  defaultMeta: Meta[];
-  description: string;
-  keywords: string[];
-  schema: Schema[];
-  title: string;
-}
-
-export interface Meta {
+export interface DefaultMeta {
   content: string;
   type: string;
   value: string;
@@ -45,7 +25,15 @@ export interface Schema {
   type: string;
 }
 
-export interface CtaText {
+export interface SEO {
+  defaultMeta: Array<DefaultMeta>;
+  description: string;
+  keywords: Array<string>;
+  schema: Array<Schema>;
+  title: string;
+}
+
+export interface CTAText {
   name: string;
   value: string;
 }
@@ -56,49 +44,23 @@ export interface Section {
   description: string;
   bg_color: string;
   order_idx: number;
-  values: SectionValue[];
+  values: any[];
 }
 
-export interface SectionValue {
-  id?: string;
-  title?: string;
-  description?: string;
-  icon?: string;
-  subtitle?: string;
-  background_color?: string;
-  background_img?: string;
-  checklist_text_color?: string;
-  end_at?: string;
-  start_at?: string;
-  template?: string;
-  text?: string;
-  has_instructor_page?: boolean;
-  image?: string;
-  name?: string;
-  short_description?: string;
-  slug?: string;
-  background?: {
-    image: string;
-    primary_color: string;
-    secondary_color: string;
-  };
-  cta?: {
-    clicked_url: string;
-    color: string;
-    text: string;
-  };
-  description_color?: string;
-  thumbnail?: string;
-  title_color?: string;
-  top_left_icon_img?: string;
-  color?: string;
-  profile_image?: string;
-  testimonial?: string;
-  thumb?: string;
-  video_type?: string;
-  video_url?: string;
-  checklist?: string[];
-  file_type?: string;
-  file_url?: string;
-  video_thumbnail?: string;
+export interface Product {
+  slug: string;
+  id: number;
+  title: string;
+  description: string;
+  platform: string;
+  type: string;
+  modality: string;
+  media: Array<Media>;
+  checklist: Array<CheckList>;
+  seo: SEO;
+  cta_text: CTAText;
+  sections: Array<Section>;
+  is_cohort_based_course: boolean;
+  secondary_cta_group: any[];
+  delivery_method: string;
 }
