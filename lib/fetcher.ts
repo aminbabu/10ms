@@ -3,14 +3,18 @@ import { API_BASE_URL } from "@/lib/constants";
 
 export interface FetcherOptions extends RequestInit {
   headers?: HeadersInit;
+  next?: {
+    revalidate?: number;
+    tags?: string[];
+  };
 }
 
 export async function fetcher<T = any>(
   endpoint: string,
-  options: FetcherOptions = {}
+  options: FetcherOptions = {},
 ): Promise<T> {
   const { headers, ...rest } = options;
-  const url = `${API_BASE_URL}${endpoint}`;
+  const url = `${API_BASE_URL}/${endpoint}`;
 
   try {
     const res = await fetch(url, {
@@ -25,10 +29,7 @@ export async function fetcher<T = any>(
 
     if (!res.ok) {
       const errorBody = await res.json().catch(() => ({}));
-
-      const message =
-        errorBody?.message || `Request failed with status ${res.status}`;
-
+      const message = errorBody?.message || `Request failed: ${res.status}`;
       throw new Error(message);
     }
 
@@ -36,10 +37,9 @@ export async function fetcher<T = any>(
       throw new Error("Failed to parse response as JSON");
     });
 
-    return data;
+    return data?.data;
   } catch (error: any) {
-    console.error("Fetcher error:", error);
-
-    throw error;
+    console.error("Fetcher error:", error?.message ?? error);
+    throw new Error(error?.message || "Failed to fetch data");
   }
 }
