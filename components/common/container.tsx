@@ -8,7 +8,9 @@ interface IProps extends ComponentProps<"div"> {
 
 const Container = ({ children, className }: IProps) => {
   return (
-    <div className={cn("mx-auto px-4 xl:container", className)}>{children}</div>
+    <div className={cn("mx-auto w-full max-w-7xl px-4", className)}>
+      {children}
+    </div>
   );
 };
 
