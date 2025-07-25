@@ -1,13 +1,13 @@
 // lib/api/products/get-product.ts
-import { Product } from "@/interfaces/product";
+import { IProduct } from "@/interfaces/product";
 import { fetcher } from "@/lib/fetcher";
 
 export async function getProduct(
   slug: string,
   revalidate: number = 60,
-): Promise<Product> {
+): Promise<IProduct> {
   try {
-    const product = await fetcher<Product>(`products/${slug}?lang=en`, {
+    const product = await fetcher<IProduct>(`products/${slug}?lang=en`, {
       next: {
         revalidate,
         tags: ["product"],
