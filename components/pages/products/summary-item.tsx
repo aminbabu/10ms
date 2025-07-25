@@ -10,7 +10,7 @@ interface IProps {
 
 const SummaryItem = ({ data, className }: IProps) => {
   return (
-    <div className={cn("flex gap-4", className)}>
+    <div className={cn("flex gap-3", className)}>
       <Image
         src={data.icon}
         alt={data.title}
