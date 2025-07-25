@@ -11,7 +11,7 @@ const CTAButton = ({ children, className, ...props }: IProps) => {
   return (
     <Button
       className={cn(
-        "cursor-pointer bg-green-600 text-base font-medium shadow-[0_4px_0_0] shadow-green-800 hover:bg-green-700 hover:shadow-green-700",
+        "cursor-pointer bg-green-600 font-medium shadow-[0_4px_0_0] shadow-green-800 hover:bg-green-700 hover:shadow-green-700 sm:text-base",
         className,
       )}
       {...props}
