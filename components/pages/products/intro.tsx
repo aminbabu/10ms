@@ -48,16 +48,16 @@ const Intro = ({ data, className }: IProps) => {
     <Section className="relative py-12 lg:py-16" ref={ref}>
       <BgHolder img="/images/products/banner.jpeg" />
       <Container className="grid grid-cols-12 items-start gap-y-8 md:gap-x-8 lg:gap-x-12">
-        <Trailers className="col-span-12 lg:hidden" data={data?.media} />
+        <Trailers className="col-span-12 lg:hidden" data={data.media} />
         <div className="col-span-12 lg:col-span-8">
-          <H1 className="text-background">{data?.title}</H1>
+          <H1 className="text-background">{data.title}</H1>
           <div className="text-background mb-2 flex flex-wrap items-center gap-2 text-sm lg:text-base">
             <RatingStars />
             (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
           </div>
           <HTML
             className="prose-p:text-background/60"
-            data={data?.description}
+            data={data.description}
           />
         </div>
       </Container>
