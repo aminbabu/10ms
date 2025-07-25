@@ -7,18 +7,20 @@ import RatingStars from "@/components/common/rating-stars";
 import Section from "@/components/common/section";
 import { H1 } from "@/components/common/typography";
 import Trailers from "@/components/pages/products/trailers";
+import { IMedia } from "@/interfaces/product";
 import { IIntroStore, useIntroStore } from "@/store/use-intro";
 import { useEffect, useRef } from "react";
 
-interface Props {
+interface IProps {
   data: {
     title: string;
     description: string;
+    media: IMedia;
   };
   className?: string;
 }
 
-const Intro = ({ data, className }: Props) => {
+const Intro = ({ data, className }: IProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const setHeight = useIntroStore<IIntroStore>((state) => state.setHeight);
 
@@ -46,7 +48,7 @@ const Intro = ({ data, className }: Props) => {
     <Section className="relative py-12 lg:py-16" ref={ref}>
       <BgHolder img="/images/products/banner.jpeg" />
       <Container className="grid grid-cols-12 items-start gap-y-8 md:gap-x-8 lg:gap-x-12">
-        <Trailers className="col-span-12 lg:hidden" />
+        <Trailers className="col-span-12 lg:hidden" data={data?.media} />
         <div className="col-span-12 lg:col-span-8">
           <H1 className="text-background">{data?.title}</H1>
           <div className="text-background mb-2 flex flex-wrap items-center gap-2 text-sm lg:text-base">
