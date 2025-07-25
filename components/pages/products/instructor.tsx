@@ -3,6 +3,7 @@ import { H3 } from "@/components/common/typography";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { IInstructor } from "@/interfaces/product";
+import { cn } from "@/lib/utils";
 import { RiArrowRightSLine } from "@remixicon/react";
 import Link from "next/link";
 
@@ -14,7 +15,12 @@ interface IProps {
 const Instructor = ({ data, className }: IProps) => {
   const nameParts = data.name.split(" ");
   return (
-    <Card className="border-0 py-0 shadow-none md:border md:py-5 md:shadow-sm">
+    <Card
+      className={cn(
+        "border-0 py-0 shadow-none md:border md:py-5 md:shadow-sm",
+        className,
+      )}
+    >
       <CardContent className="flex gap-4 overflow-hidden px-0 md:px-5">
         <Avatar className="size-[74px]">
           <AvatarImage src={data.image} />
