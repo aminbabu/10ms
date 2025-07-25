@@ -105,22 +105,30 @@ export default async function ProductDetails({ params }: IProps) {
       description: product.description,
       media: product.media,
     };
+    const media = product.media;
+    const ctaChecklist = {
+      cta_text: product.cta_text,
+      checklist: product.checklist,
+    };
 
     return (
       <Main>
         <Intro data={intro} />
         <Section className="pt-0 lg:pt-0">
-          <Container className="grid grid-cols-12 gap-y-8 md:gap-x-8 lg:gap-x-12">
-            <div className="col-span-12 lg:col-span-8">
-              <CTAChecklist className="lg:hidden" />
+          <Container className="flex flex-col gap-y-8 md:flex-row md:gap-x-8 lg:gap-x-12">
+            <div className="md:grow">
+              <CTAChecklist
+                data={ctaChecklist}
+                className="pt-0 md:hidden md:pt-0"
+              />
               <Instructors data={product} />
               <Summary data={product} />
               <Benefits data={product} />
               <Features data={product} />
               <Details data={product} />
             </div>
-            <div className="col-span-12 hidden lg:col-span-4 lg:block">
-              <Sidebar data={product} />
+            <div className="hidden shrink-0 md:block md:basis-[345px] lg:basis-[400px]">
+              <Sidebar ctaChecklist={ctaChecklist} media={media} />
             </div>
           </Container>
         </Section>
