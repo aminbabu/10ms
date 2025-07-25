@@ -1,11 +1,12 @@
 import { cn } from "@/lib/utils";
 import { ComponentProps, ReactNode } from "react";
 
-const Section = ({
-  children,
-  className,
-  ...props
-}: { children: ReactNode; className?: string } & ComponentProps<"section">) => {
+interface IProps extends ComponentProps<"section"> {
+  children: ReactNode;
+  className?: string;
+}
+
+const Section = ({ children, className, ...props }: IProps) => {
   return (
     <section className={cn("py-6 lg:py-12", className)} {...props}>
       {children}

@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils";
 import { ComponentProps, ReactNode } from "react";
 
-const Container = ({
-  children,
-  className,
-}: { children: ReactNode; className?: string } & ComponentProps<"div">) => {
+interface IProps extends ComponentProps<"div"> {
+  children: ReactNode;
+  className?: string;
+}
+
+const Container = ({ children, className }: IProps) => {
   return (
-    <div className={cn("container mx-auto px-4", className)}>{children}</div>
+    <div className={cn("mx-auto px-4 xl:container", className)}>{children}</div>
   );
 };
 

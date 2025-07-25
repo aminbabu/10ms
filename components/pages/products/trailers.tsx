@@ -14,13 +14,12 @@ import { UseEmblaCarouselType } from "embla-carousel-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
-const Trailers = ({
-  data,
-  className,
-}: {
+interface IProps {
   data: Array<IMedia>;
   className?: string;
-}) => {
+}
+
+const Trailers = ({ data, className }: IProps) => {
   const [api, setApi] = useState<UseEmblaCarouselType[1] | null>(null);
   const [thumbApi, setThumbApi] = useState<UseEmblaCarouselType[1] | null>(
     null,
@@ -58,7 +57,7 @@ const Trailers = ({
   }, [api, onSelect]);
 
   return (
-    <div className={cn("space-y-2.5", className)}>
+    <div className={cn("space-y-2.5 md:w-[345px] lg:w-[400px]", className)}>
       <Carousel className="w-full" setApi={setApi}>
         <CarouselContent>
           {data.map((item, idx) => (
@@ -67,10 +66,10 @@ const Trailers = ({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2" />
+        <CarouselPrevious className="left-2 disabled:pointer-events-auto" />
+        <CarouselNext className="right-2 disabled:pointer-events-auto" />
       </Carousel>
-      <Carousel setApi={setThumbApi} className="px-2">
+      <Carousel setApi={setThumbApi} className="px-3">
         <CarouselContent className="-ml-2">
           {data.map((item, idx) => (
             <CarouselItem

@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { RiPlayFill } from "@remixicon/react";
 import { ComponentProps } from "react";
 
-const PlayButton = ({
-  onPlay,
-}: { onPlay: () => void } & ComponentProps<"button">) => {
+interface IProps extends ComponentProps<"button"> {
+  onPlay: () => void;
+}
+
+const PlayButton = ({ onPlay }: IProps) => {
   return (
     <Button
       variant="link"

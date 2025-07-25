@@ -2,11 +2,12 @@ import { cn } from "@/lib/utils";
 import DOMPurify from "isomorphic-dompurify";
 import { ComponentProps } from "react";
 
-const HTML = ({
-  data,
-  className,
-  ...props
-}: { data: string; className?: string } & ComponentProps<"div">) => {
+interface IProps extends ComponentProps<"div"> {
+  data: string;
+  className?: string;
+}
+
+const HTML = ({ data, className, ...props }: IProps) => {
   const sanitizedHtml = DOMPurify.sanitize(data);
 
   return (

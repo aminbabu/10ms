@@ -1,15 +1,13 @@
 import { cn } from "@/lib/utils";
 import { ComponentProps, ReactNode } from "react";
 
-const BgHolder = ({
-  children,
-  img,
-  className,
-}: {
+interface IProps extends ComponentProps<"div"> {
   children: ReactNode;
   img?: string;
   className?: string;
-} & ComponentProps<"div">) => {
+}
+
+const BgHolder = ({ children, img, className }: IProps) => {
   return (
     <div
       className={cn(
