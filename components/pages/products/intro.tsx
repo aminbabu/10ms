@@ -8,6 +8,7 @@ import Section from "@/components/common/section";
 import { H1 } from "@/components/common/typography";
 import Trailers from "@/components/pages/products/trailers";
 import { IMedia } from "@/interfaces/product";
+import { MOBILE_BREAKPOINT } from "@/lib/constants";
 import { IIntroStore, useIntroStore } from "@/store/use-intro";
 import { useEffect, useRef } from "react";
 
@@ -28,7 +29,7 @@ const Intro = ({ data, className }: IProps) => {
     const handleResize = () => {
       const width = window.innerWidth;
 
-      if (ref.current && width >= 1024) {
+      if (ref.current && width >= MOBILE_BREAKPOINT) {
         const computedStyle = getComputedStyle(ref.current);
         const paddingTop = parseFloat(computedStyle.paddingTop);
         const height = ref.current.clientHeight - paddingTop;
@@ -47,9 +48,9 @@ const Intro = ({ data, className }: IProps) => {
   return (
     <Section className="relative py-12 lg:py-16" ref={ref}>
       <BgHolder img="/images/products/banner.jpeg" />
-      <Container className="grid grid-cols-12 items-start gap-y-8 md:gap-x-8 lg:gap-x-12">
-        <Trailers className="col-span-12 lg:hidden" data={data.media} />
-        <div className="col-span-12 lg:col-span-8">
+      <Container className="flex flex-col gap-y-8 md:flex-row md:gap-x-8 lg:gap-x-12">
+        <Trailers className="md:hidden" data={data.media} />
+        <div className="md:basis-[calc(100%-377px)] lg:basis-[calc(100%-448px)]">
           <H1 className="text-background">{data.title}</H1>
           <div className="text-background mb-2 flex flex-wrap items-center gap-2 text-sm lg:text-base">
             <RatingStars />
