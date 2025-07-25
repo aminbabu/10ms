@@ -6,7 +6,14 @@ export function H1({
   className,
 }: { children: ReactNode; className?: string } & ComponentProps<"h1">) {
   return (
-    <h1 className={cn("text-4xl font-semibold", className)}>{children}</h1>
+    <h1
+      className={cn(
+        "mb-2 text-2xl font-semibold md:text-3xl lg:text-4xl",
+        className,
+      )}
+    >
+      {children}
+    </h1>
   );
 }
 
@@ -15,7 +22,14 @@ export function H2({
   className,
 }: { children: ReactNode; className?: string } & ComponentProps<"h2">) {
   return (
-    <h2 className={cn("text-3xl font-semibold", className)}>{children}</h2>
+    <h2
+      className={cn(
+        "mb-2 text-xl font-semibold md:text-2xl lg:text-3xl",
+        className,
+      )}
+    >
+      {children}
+    </h2>
   );
 }
 
@@ -24,7 +38,14 @@ export function H3({
   className,
 }: { children: ReactNode; className?: string } & ComponentProps<"h3">) {
   return (
-    <h3 className={cn("text-2xl font-semibold", className)}>{children}</h3>
+    <h3
+      className={cn(
+        "mb-2 text-lg font-semibold md:text-xl lg:text-2xl",
+        className,
+      )}
+    >
+      {children}
+    </h3>
   );
 }
 
@@ -32,7 +53,16 @@ export function H4({
   children,
   className,
 }: { children: ReactNode; className?: string } & ComponentProps<"h4">) {
-  return <h4 className={cn("text-xl font-semibold", className)}>{children}</h4>;
+  return (
+    <h4
+      className={cn(
+        "mb-2 text-base font-semibold md:text-lg lg:text-xl",
+        className,
+      )}
+    >
+      {children}
+    </h4>
+  );
 }
 
 export function P({
