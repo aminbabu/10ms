@@ -23,7 +23,7 @@ export function H2({ children, className }: IProps & ComponentProps<"h2">) {
   return (
     <h2
       className={cn(
-        "mb-2 text-xl font-semibold md:text-2xl lg:text-3xl",
+        "mb-2 text-lg font-semibold md:text-xl lg:text-2xl",
         className,
       )}
     >
@@ -36,7 +36,7 @@ export function H3({ children, className }: IProps & ComponentProps<"h3">) {
   return (
     <h3
       className={cn(
-        "mb-2 text-lg font-semibold md:text-xl lg:text-2xl",
+        "mb-2 text-base font-semibold md:text-lg lg:text-xl",
         className,
       )}
     >
@@ -47,12 +47,7 @@ export function H3({ children, className }: IProps & ComponentProps<"h3">) {
 
 export function H4({ children, className }: IProps & ComponentProps<"h4">) {
   return (
-    <h4
-      className={cn(
-        "mb-2 text-base font-semibold md:text-lg lg:text-xl",
-        className,
-      )}
-    >
+    <h4 className={cn("mb-2 text-base font-semibold lg:text-lg", className)}>
       {children}
     </h4>
   );
