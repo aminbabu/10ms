@@ -119,6 +119,9 @@ export default async function ProductDetails({ params }: IProps) {
     const benefits = product.sections.find(
       (section) => section.type === "pointers",
     );
+    const features = product.sections.find(
+      (section) => section.type === "feature_explanations",
+    );
 
     return (
       <Main>
@@ -133,7 +136,7 @@ export default async function ProductDetails({ params }: IProps) {
               <Instructors data={instructors} />
               <Summary data={summary} />
               <Benefits data={benefits} />
-              <Features data={product} />
+              <Features data={features} />
               <Details data={product} />
             </div>
             <div className="hidden shrink-0 md:block md:basis-[345px] lg:basis-[400px]">

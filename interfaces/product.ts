@@ -87,3 +87,12 @@ export interface IBenefit {
   icon: string;
   color: string;
 }
+
+export interface IFeature {
+  id: string;
+  title: string;
+  checklist: Array<string>;
+  file_type: string;
+  file_url: string;
+  video_thumbnail: string;
+}
