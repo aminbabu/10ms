@@ -22,14 +22,14 @@ const Instructor = ({ data, className }: IProps) => {
       )}
     >
       <CardContent className="flex gap-4 overflow-hidden px-0 md:px-5">
-        <Avatar className="size-[74px]">
+        <Avatar className="size-[74px] shrink-0">
           <AvatarImage src={data.image} />
           <AvatarFallback>
             {nameParts[0].charAt(0)}
             {nameParts[1].charAt(0)}
           </AvatarFallback>
         </Avatar>
-        <div>
+        <div className="flex-1">
           <H3 className="lg:text-lg">
             {data.has_instructor_page ? (
               <Link
