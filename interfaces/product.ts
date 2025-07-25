@@ -73,3 +73,10 @@ export interface IInstructor {
   image: IMedia;
   has_instructor_page: boolean;
 }
+
+export interface ISummaryItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+}
