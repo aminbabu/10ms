@@ -110,6 +110,9 @@ export default async function ProductDetails({ params }: IProps) {
       cta_text: product.cta_text,
       checklist: product.checklist,
     };
+    const instructors = product.sections.find(
+      (section) => section.type === "instructors",
+    );
 
     return (
       <Main>
@@ -119,9 +122,9 @@ export default async function ProductDetails({ params }: IProps) {
             <div className="md:grow">
               <CTAChecklist
                 data={ctaChecklist}
-                className="pt-0 md:hidden md:pt-0"
+                className="border-b-secondary border-b-8 pt-0 sm:border-b-0 md:hidden md:pt-0"
               />
-              <Instructors data={product} />
+              <Instructors data={instructors} />
               <Summary data={product} />
               <Benefits data={product} />
               <Features data={product} />

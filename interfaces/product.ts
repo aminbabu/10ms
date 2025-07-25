@@ -64,3 +64,12 @@ export interface IProduct {
   secondary_cta_group: any[];
   delivery_method: string;
 }
+
+export interface IInstructor {
+  slug: string;
+  name: string;
+  description: string;
+  short_description: string;
+  image: IMedia;
+  has_instructor_page: boolean;
+}
