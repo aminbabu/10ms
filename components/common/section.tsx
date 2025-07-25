@@ -8,7 +8,7 @@ interface IProps extends ComponentProps<"section"> {
 
 const Section = ({ children, className, ...props }: IProps) => {
   return (
-    <section className={cn("py-6 lg:py-12", className)} {...props}>
+    <section className={cn("py-6", className)} {...props}>
       {children}
     </section>
   );

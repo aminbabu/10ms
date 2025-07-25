@@ -38,7 +38,7 @@ const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
       <div className="md:sticky md:top-4">
         <Card className="rounded-none py-4">
           <CardContent className="px-4">
-            <CTAChecklist className="md:py-0" data={ctaChecklist} />
+            <CTAChecklist data={ctaChecklist} />
           </CardContent>
         </Card>
         <div className="mt-4 flex items-center justify-between gap-4 text-sm">
