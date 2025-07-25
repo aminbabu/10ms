@@ -80,3 +80,10 @@ export interface ISummaryItem {
   subtitle: string;
   icon: string;
 }
+
+export interface IBenefit {
+  id: string;
+  text: string;
+  icon: string;
+  color: string;
+}
