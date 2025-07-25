@@ -96,3 +96,10 @@ export interface IFeature {
   file_url: string;
   video_thumbnail: string;
 }
+
+export interface IAbout {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
