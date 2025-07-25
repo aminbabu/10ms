@@ -10,6 +10,7 @@ import Trailers from "@/components/pages/products/trailers";
 import { IMedia } from "@/interfaces/product";
 import { MOBILE_BREAKPOINT } from "@/lib/constants";
 import { IIntroStore, useIntroStore } from "@/store/use-intro";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 
 interface IProps {
@@ -24,6 +25,7 @@ interface IProps {
 const Intro = ({ data, className }: IProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const setHeight = useIntroStore<IIntroStore>((state) => state.setHeight);
+  const t = useTranslations("ProductPage");
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,8 +55,7 @@ const Intro = ({ data, className }: IProps) => {
         <div className="md:basis-[calc(100%-377px)] lg:basis-[calc(100%-448px)]">
           <H1 className="text-background">{data.title}</H1>
           <div className="text-background mb-2 flex flex-wrap items-center gap-2 text-sm lg:text-base">
-            <RatingStars />
-            (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
+            <RatingStars />({t("rating.text")})
           </div>
           <HTML
             className="prose-p:text-background/60"

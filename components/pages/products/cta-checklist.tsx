@@ -4,6 +4,7 @@ import CTAButton from "@/components/pages/products/call-to-action";
 import Checklist from "@/components/pages/products/checklist";
 import { ICheckList, ICTAText } from "@/interfaces/product";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { ComponentProps } from "react";
 
 interface IProps extends ComponentProps<"div"> {
@@ -15,13 +16,17 @@ interface IProps extends ComponentProps<"div"> {
 }
 
 const CTAChecklist = ({ data, className }: IProps) => {
+  const t = useTranslations("ProductPage");
+
   const handleClick = () => {
     console.log("Navigating to checkout");
   };
 
   return (
     <div className={cn("py-6", className)}>
-      <p className="mt-4 mb-2 text-2xl font-semibold md:mt-0 md:mb-5">৳1000</p>
+      <p className="mt-4 mb-2 text-2xl font-semibold md:mt-0 md:mb-5">
+        ৳{t("price")}
+      </p>
       <CTAButton className="h-8 w-full sm:h-10" onClick={handleClick}>
         {data.cta_text.name}
       </CTAButton>

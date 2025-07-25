@@ -1,0 +1,20 @@
+{
+  "ProductPage": {
+    "seo": {
+      "title": "IELTS Course",
+      "description": "Explore the IELTS Course at 10 Minute School.",
+      "keywords": ["IELTS Course", "IELTS Preparation", "IELTS Bangladesh"]
+    },
+    "rating": {
+      "text": "82.6% of students gave a 5-star rating after completing the course"
+    },
+    "price": "1000",
+    "checkList": {
+      "title": "What’s included in this course"
+    },
+    "contact": {
+      "title": "To learn more about the course",
+      "urlText": "Call (16910)"
+    }
+  }
+}

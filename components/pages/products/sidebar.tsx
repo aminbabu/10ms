@@ -7,6 +7,7 @@ import { ICheckList, ICTAText, IMedia } from "@/interfaces/product";
 import { cn } from "@/lib/utils";
 import { IIntroStore, useIntroStore } from "@/store/use-intro";
 import { RiPhoneFill } from "@remixicon/react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ComponentProps } from "react";
 
@@ -20,6 +21,7 @@ interface IProps extends ComponentProps<"aside"> {
 }
 
 const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
+  const t = useTranslations("ProductPage");
   const height = useIntroStore<IIntroStore>((state) => state.height);
 
   return (
@@ -42,15 +44,13 @@ const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
           </CardContent>
         </Card>
         <div className="mt-4 flex items-center justify-between gap-4 text-sm">
-          <p className="text-muted-foreground">
-            কোর্সটি সম্পর্কে বিস্তারিত জানতে
-          </p>
+          <p className="text-muted-foreground">{t("contact.title")}</p>
           <Link
             href="tel:16910"
             className="flex items-center gap-1 text-green-600 underline transition-colors hover:text-green-700"
           >
             <RiPhoneFill className="size-4" />
-            ফোন করুন (16910)
+            {t("contact.urlText")}
           </Link>
         </div>
       </div>
