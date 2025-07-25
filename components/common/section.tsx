@@ -4,8 +4,13 @@ import { ComponentProps, ReactNode } from "react";
 const Section = ({
   children,
   className,
+  ...props
 }: { children: ReactNode; className?: string } & ComponentProps<"section">) => {
-  return <main className={cn("py-8 lg:py-10", className)}>{children}</main>;
+  return (
+    <section className={cn("py-6 lg:py-12", className)} {...props}>
+      {children}
+    </section>
+  );
 };
 
 export default Section;
