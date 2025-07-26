@@ -70,7 +70,7 @@ export interface IInstructor {
   name: string;
   description: string;
   short_description: string;
-  image: IMedia;
+  image: string;
   has_instructor_page: boolean;
 }
 

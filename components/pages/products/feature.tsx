@@ -1,5 +1,6 @@
 import { H3, List, ListItem } from "@/components/common/typography";
 import { IFeature } from "@/interfaces/product";
+import { cn } from "@/lib/utils";
 import { RiCheckLine } from "@remixicon/react";
 import Image from "next/image";
 
@@ -10,11 +11,16 @@ interface IProps {
 
 const Feature = ({ data, className }: IProps) => {
   return (
-    <div className="flex flex-col justify-between gap-x-4 gap-y-6 sm:flex-row md:flex-col lg:flex-row lg:items-start">
+    <div
+      className={cn(
+        "flex flex-col justify-between gap-x-4 gap-y-6 sm:flex-row md:flex-col lg:flex-row lg:items-start",
+        className,
+      )}
+    >
       <div>
         <H3 className="mb-3 md:text-base lg:text-base">{data.title}</H3>
         <List>
-          {data.checklist.map((item, index) => (
+          {data.checklist.map((item) => (
             <ListItem key={item} className="flex gap-3">
               <RiCheckLine className="shrink-0 text-blue-500" />
               <p>{item}</p>

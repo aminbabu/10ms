@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ComponentProps, ReactNode } from "react";
 
 interface IProps extends ComponentProps<"div"> {
-  children: ReactNode;
+  children?: ReactNode;
   img?: string;
   className?: string;
 }

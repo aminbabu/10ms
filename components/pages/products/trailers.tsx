@@ -80,8 +80,8 @@ const Trailers = ({ data, className }: IProps) => {
               <Image
                 src={
                   item.resource_type === "video"
-                    ? item.thumbnail_url
-                    : item.resource_value
+                    ? item.thumbnail_url!
+                    : item.resource_value!
                 }
                 alt={item.name}
                 width={160}

@@ -9,7 +9,8 @@ import { H1 } from "@/components/common/typography";
 import Trailers from "@/components/pages/products/trailers";
 import { IMedia } from "@/interfaces/product";
 import { MOBILE_BREAKPOINT } from "@/lib/constants";
-import { IIntroStore, useIntroStore } from "@/store/use-intro";
+import { cn } from "@/lib/utils";
+import { useIntroStore } from "@/store/use-intro";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 
@@ -17,14 +18,14 @@ interface IProps {
   data: {
     title: string;
     description: string;
-    media: IMedia;
+    media: Array<IMedia>;
   };
   className?: string;
 }
 
 const Intro = ({ data, className }: IProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const setHeight = useIntroStore<IIntroStore>((state) => state.setHeight);
+  const setHeight = useIntroStore((state) => state.setHeight);
   const t = useTranslations("ProductPage");
 
   useEffect(() => {
@@ -45,10 +46,10 @@ const Intro = ({ data, className }: IProps) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [setHeight]);
 
   return (
-    <Section className="relative py-12 lg:py-16" ref={ref}>
+    <Section className={cn("relative py-12 lg:py-16", className)} ref={ref}>
       <BgHolder img="/images/products/banner.jpeg" />
       <Container className="flex flex-col gap-y-8 md:flex-row md:gap-x-8 lg:gap-x-12">
         <Trailers className="md:hidden" data={data.media} />

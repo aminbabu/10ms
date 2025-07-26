@@ -5,7 +5,7 @@ import Trailers from "@/components/pages/products/trailers";
 import { Card, CardContent } from "@/components/ui/card";
 import { ICheckList, ICTAText, IMedia } from "@/interfaces/product";
 import { cn } from "@/lib/utils";
-import { IIntroStore, useIntroStore } from "@/store/use-intro";
+import { useIntroStore } from "@/store/use-intro";
 import { RiPhoneFill } from "@remixicon/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -14,15 +14,15 @@ import { ComponentProps } from "react";
 interface IProps extends ComponentProps<"aside"> {
   ctaChecklist: {
     cta_text: ICTAText;
-    checklist: ICheckList;
+    checklist: Array<ICheckList>;
   };
-  media: IMedia;
+  media: Array<IMedia>;
   className?: string;
 }
 
 const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
   const t = useTranslations("ProductPage");
-  const height = useIntroStore<IIntroStore>((state) => state.height);
+  const height = useIntroStore((state) => state.height);
 
   return (
     <aside

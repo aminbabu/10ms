@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export interface IIntroStore {
   height: number;
-  setHeight: (height: string) => void;
+  setHeight: (height: number) => void;
 }
 
 export const useIntroStore = create<IIntroStore>((set) => ({

@@ -10,7 +10,7 @@ interface IProps {
 
 const Instructors = ({ data, className }: IProps) => {
   return (
-    <Section>
+    <Section className={className}>
       <H2 className="mb-4">{data.name}</H2>
       <div className="space-y-5">
         {data.values.map((instructor: IInstructor) => (

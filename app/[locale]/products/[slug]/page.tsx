@@ -4,7 +4,7 @@ import Section from "@/components/common/section";
 import Benefits from "@/components/pages/products/benefits";
 import CTAChecklist from "@/components/pages/products/cta-checklist";
 import Details from "@/components/pages/products/details";
-import Features from "@/components/pages/products/features"; // Fixed typo in import
+import Features from "@/components/pages/products/features";
 import Instructors from "@/components/pages/products/instructors";
 import Intro from "@/components/pages/products/intro";
 import Sidebar from "@/components/pages/products/sidebar";
@@ -15,29 +15,14 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface IProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
-
-type OpenGraphType =
-  | "website"
-  | "article"
-  | "book"
-  | "profile"
-  | "music.song"
-  | "music.album"
-  | "music.playlist"
-  | "music.radio_station"
-  | "video.movie"
-  | "video.episode"
-  | "video.tv_show"
-  | "video.other";
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   try {
     const { slug } = await params;
-    const product = await getProduct<IProduct>(slug);
+    const product: IProduct = await getProduct(slug);
 
-    // Extract OpenGraph metadata from the seo.defaultMeta array
     const openGraphData =
       product.seo?.defaultMeta?.reduce(
         (acc, meta) => {
@@ -47,37 +32,37 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
           return acc;
         },
         {} as Record<string, string>,
-      ) || {};
+      ) ?? {};
 
     return {
-      title: product?.seo?.title || product?.title || "IELTS Course",
+      title: product.seo?.title || product.title || "IELTS Course",
       description:
-        product?.seo?.description ||
-        product?.description ||
+        product.seo?.description ||
+        product.description ||
         "Explore the IELTS Course at 10 Minute School.",
-      keywords: product?.seo?.keywords || [
+      keywords: product.seo?.keywords ?? [
         "IELTS Course",
         "IELTS Preparation",
         "IELTS Bangladesh",
       ],
       openGraph: {
-        title: openGraphData?.title || product?.title,
-        description: openGraphData?.description || product?.description,
-        images: openGraphData?.image
+        title: openGraphData.title || product.title,
+        description: openGraphData.description || product.description,
+        images: openGraphData.image
           ? [
               {
-                url: openGraphData?.image,
-                alt: openGraphData["image:alt"] || product?.title,
+                url: openGraphData.image,
+                alt: openGraphData["image:alt"] || product.title,
               },
             ]
           : [],
-        url: openGraphData?.url || `https://10minuteschool.com/product/${slug}`,
+        url: openGraphData.url || `https://10minuteschool.com/product/${slug}`,
         type: "website",
-        locale: openGraphData?.locale || "en_US",
+        locale: openGraphData.locale || "en_US",
       },
     };
   } catch (error) {
-    console.error("Error generating metadata:", error);
+    console.error("Metadata generation failed:", error);
     return {
       title: "IELTS Course",
       description: "Explore the IELTS Course at 10 Minute School.",
@@ -89,42 +74,23 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 export default async function ProductDetails({ params }: IProps) {
   try {
     const { slug } = await params;
+    const product: IProduct = await getProduct(slug);
 
-    if (!slug) {
-      throw new Error("Missing slug");
-    }
+    if (!product) return notFound();
 
-    const product = await getProduct<IProduct>(slug);
+    const { title, description, media, cta_text, checklist, sections } =
+      product;
 
-    if (!product) {
-      throw new Error("Product not found");
-    }
+    const intro = { title, description, media };
+    const ctaChecklist = { cta_text, checklist };
 
-    const intro = {
-      title: product.title,
-      description: product.description,
-      media: product.media,
+    const sectionMap = {
+      instructors: sections.find((s) => s.type === "instructors"),
+      summary: sections.find((s) => s.type === "features"),
+      benefits: sections.find((s) => s.type === "pointers"),
+      features: sections.find((s) => s.type === "feature_explanations"),
+      details: sections.find((s) => s.type === "about"),
     };
-    const media = product.media;
-    const ctaChecklist = {
-      cta_text: product.cta_text,
-      checklist: product.checklist,
-    };
-    const instructors = product.sections.find(
-      (section) => section.type === "instructors",
-    );
-    const summary = product.sections.find(
-      (section) => section.type === "features",
-    );
-    const benefits = product.sections.find(
-      (section) => section.type === "pointers",
-    );
-    const features = product.sections.find(
-      (section) => section.type === "feature_explanations",
-    );
-    const details = product.sections.find(
-      (section) => section.type === "about",
-    );
 
     return (
       <Main>
@@ -136,21 +102,23 @@ export default async function ProductDetails({ params }: IProps) {
                 data={ctaChecklist}
                 className="border-b-secondary border-b-8 pt-0 sm:border-b-0 md:hidden"
               />
-              <Instructors data={instructors} />
-              <Summary data={summary} />
-              <Benefits data={benefits} />
-              <Features data={features} />
-              <Details data={details} />
+              {sectionMap?.instructors && (
+                <Instructors data={sectionMap.instructors} />
+              )}
+              {sectionMap?.summary && <Summary data={sectionMap.summary} />}
+              {sectionMap?.benefits && <Benefits data={sectionMap.benefits} />}
+              {sectionMap?.features && <Features data={sectionMap.features} />}
+              {sectionMap?.details && <Details data={sectionMap.details} />}
             </div>
-            <div className="hidden shrink-0 md:block md:basis-[345px] lg:basis-[400px]">
+            <aside className="hidden shrink-0 md:block md:basis-[345px] lg:basis-[400px]">
               <Sidebar ctaChecklist={ctaChecklist} media={media} />
-            </div>
+            </aside>
           </Container>
         </Section>
       </Main>
     );
   } catch (error) {
-    console.error("Error fetching product details:", error);
+    console.error("Error rendering product details:", error);
     return notFound();
   }
 }

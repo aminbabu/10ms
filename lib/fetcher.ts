@@ -9,7 +9,7 @@ export interface FetcherOptions extends RequestInit {
   };
 }
 
-export async function fetcher<T = any>(
+export async function fetcher<T = unknown>(
   endpoint: string,
   options: FetcherOptions = {},
 ): Promise<T> {
@@ -38,8 +38,13 @@ export async function fetcher<T = any>(
     });
 
     return data?.data;
-  } catch (error: any) {
-    console.error("Fetcher error:", error?.message ?? error);
-    throw new Error(error?.message || "Failed to fetch data");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Fetcher error:", error.message);
+      throw new Error(error.message);
+    }
+
+    console.error("Fetcher error:", error);
+    throw new Error("Failed to fetch data");
   }
 }
