@@ -66,8 +66,13 @@ export function Lead({ children, className }: IProps & ComponentProps<"p">) {
 export function ListItem({
   children,
   className,
+  ...props
 }: IProps & ComponentProps<"li">) {
-  return <li className={className}>{children}</li>;
+  return (
+    <li className={className} {...props}>
+      {children}
+    </li>
+  );
 }
 
 export function List({ children, className }: IProps & ComponentProps<"ul">) {
