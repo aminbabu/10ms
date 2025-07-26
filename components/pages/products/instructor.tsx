@@ -23,7 +23,7 @@ const Instructor = ({ data, className }: IProps) => {
     >
       <CardContent className="flex gap-4 overflow-hidden px-0 md:px-5">
         <Avatar className="size-[74px] shrink-0">
-          <AvatarImage src={data.image} />
+          <AvatarImage src={data.image} alt={data.name} />
           <AvatarFallback>
             {nameParts[0].charAt(0)}
             {nameParts[1].charAt(0)}
