@@ -1,4 +1,6 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ??
+  "https://api.10minuteschool.com/discovery-service/api/v1";
 export const MOBILE_BREAKPOINT = parseInt(
   process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT ?? "768",
 );
