@@ -1,17 +1,18 @@
 // lib/fetcher.ts
 import { API_BASE_URL } from "@/lib/constants";
 
-export interface FetcherOptions extends RequestInit {
+export interface IFetcherOptions extends RequestInit {
   headers?: HeadersInit;
   next?: {
     revalidate?: number;
+    cache?: "no-cache" | "no-store" | "reload";
     tags?: string[];
   };
 }
 
 export async function fetcher<T = unknown>(
   endpoint: string,
-  options: FetcherOptions = {},
+  options: IFetcherOptions = {},
 ): Promise<T> {
   const { headers, ...rest } = options;
   const url = `${API_BASE_URL}${endpoint}`;
