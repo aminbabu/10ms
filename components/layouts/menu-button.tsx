@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useMenuStore } from "@/store/use-menu";
-import { RiMenuUnfoldLine } from "@remixicon/react";
+import { RiMenuFoldLine, RiMenuUnfoldLine } from "@remixicon/react";
 
 interface IProps {
   className?: string;
@@ -14,12 +14,16 @@ function MenuButton({ className }: IProps) {
   const toggle = useMenuStore((state) => state.toggle);
 
   return (
-    <Button variant="ghost" size="icon" onClick={toggle} className={className}>
-      <RiMenuUnfoldLine
-        className={cn("transition-transform duration-300 ease-in-out", {
-          "rotate-180": isOpen,
-        })}
-      />
+    <Button
+      variant="link"
+      onClick={toggle}
+      className={cn("size-8 hover:no-underline md:size-9", className)}
+    >
+      {isOpen ? (
+        <RiMenuFoldLine className="transition-transform duration-300 ease-in-out" />
+      ) : (
+        <RiMenuUnfoldLine className="transition-transform duration-300 ease-in-out" />
+      )}
     </Button>
   );
 }

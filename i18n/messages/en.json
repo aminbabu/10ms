@@ -11,12 +11,12 @@
     "price": "1000",
     "checkList": {
       "title": "What’s included in this course"
-    },
-    "contact": {
-      "title": "To learn more about the course",
-      "text": "Call",
-      "number": "16910"
     }
+  },
+  "contact": {
+    "title": "To learn more about the course",
+    "text": "Call",
+    "number": "16910"
   },
   "search": {
     "label": "Search",
@@ -25,5 +25,74 @@
       "title": "Popular searches",
       "notFound": "No results found"
     }
+  },
+  "auth": {
+    "login": {
+      "text": "Login"
+    }
+  },
+  "navMenu": {
+    "title": "Menu",
+
+    "class6to12": "Class 6-12",
+    "hsc": "HSC",
+    "classTen": "Class Ten",
+    "classNine": "Class Nine",
+    "classEight": "Class Eight",
+    "classSeven": "Class Seven",
+    "classSix": "Class Six",
+
+    "skills": "Skills",
+    "allCourses": "All Courses",
+    "languageLearning": "Language Learning",
+    "freelancing": "Freelancing",
+    "bundle": "Bundle",
+    "skillsIt": "Skills & IT",
+    "designCreative": "Design & Creative",
+    "careerReadiness": "Career Readiness",
+    "kids": "Kids (Age 7–14)",
+    "professional": "Professional",
+    "free": "Free",
+
+    "admission": "Admission",
+
+    "onlineBatch": "Online Batch",
+    "class610": "Online Batch (Class 6–10)",
+
+    "englishCenter": "English Center",
+    "allProgrammes": "All Programmes",
+    "ieltsProgramme": "IELTS Programme",
+    "spokenEnglishJunior": "Spoken English (Junior)",
+    "englishFoundationProgramme": "English Foundation Programme",
+    "kidsEnglish": "Kids' English",
+
+    "more": "More",
+    "jobPreparation": "Job Preparation Courses",
+    "blog": "Blog",
+    "bookStore": "Book Store",
+    "freeNotesGuides": "Free Notes & Guides",
+    "academicContent": "Academic Digital Content",
+    "verifyCertificate": "Verify Certificate",
+
+    "careerRecruitment": "Career / Recruitment",
+    "joinAsTeacher": "Join as a Teacher",
+    "joinAsAffiliate": "Join as an Affiliate"
+  },
+  "NotFoundPage": {
+    "code": "404",
+    "title": "Page Not Found",
+    "description": "Sorry, we couldn't find the page you're looking for. The page might have been moved, deleted, or you entered the wrong URL.",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "supportMessage": "If you believe this is an error, please",
+    "contactSupport": "contact support"
+  },
+  "GlobalErrorPage": {
+    "code": "500",
+    "title": "Application Error",
+    "description": "A critical error occurred. Please try refreshing the page or contact support if the problem persists.",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "errorDetails": "Technical Details"
   }
 }

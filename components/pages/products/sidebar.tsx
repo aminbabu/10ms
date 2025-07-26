@@ -21,7 +21,7 @@ interface IProps extends ComponentProps<"aside"> {
 }
 
 const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
-  const t = useTranslations("ProductPage");
+  const t = useTranslations("contact");
   const height = useIntroStore((state) => state.height);
 
   return (
@@ -37,20 +37,20 @@ const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
           <Trailers data={media} />
         </CardContent>
       </Card>
-      <div className="md:sticky md:top-4">
+      <div className="md:sticky md:top-20">
         <Card className="rounded-none py-4">
           <CardContent className="px-4">
             <CTAChecklist data={ctaChecklist} />
           </CardContent>
         </Card>
         <div className="mt-4 flex items-center justify-between gap-4 text-sm">
-          <p className="text-muted-foreground">{t("contact.title")}</p>
+          <p className="text-muted-foreground">{t("title")}</p>
           <Link
             href="tel:16910"
             className="flex items-center gap-1 text-green-600 underline transition-colors hover:text-green-700"
           >
             <RiPhoneFill className="size-4" />
-            {t("contact.text")} ({t("contact.number")})
+            {t("text")} ({t("number")})
           </Link>
         </div>
       </div>
