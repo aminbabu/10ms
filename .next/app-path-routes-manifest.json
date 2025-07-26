@@ -1,0 +1,6 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/robots.txt/route": "/robots.txt",
+  "/_not-found/page": "/_not-found",
+  "/[locale]/page": "/[locale]"
+}
