@@ -6,11 +6,13 @@ export async function getProduct(
   slug: string,
   lang: string = "en",
   revalidate: number = 60,
+  cache: "no-cache" | "no-store" | "reload" = "no-store",
 ): Promise<IProduct> {
   try {
     const product = await fetcher<IProduct>(`/products/${slug}?lang=${lang}`, {
       next: {
         revalidate,
+        cache,
         tags: ["product"],
       },
     });
