@@ -4,7 +4,7 @@ import PlayButton from "@/components/common/play-button";
 import { IMedia } from "@/interfaces/product";
 import Image from "next/image";
 import { memo, useEffect, useState } from "react";
-import ReactPlayer from "react-player";
+import YouTube from "react-youtube";
 
 interface IProps {
   data: IMedia;
@@ -24,8 +24,6 @@ const Trailer = ({ data, isActive }: IProps) => {
     setPlaying(true);
   };
 
-  const videoUrl = `https://www.youtube.com/watch?v=${data.resource_value}`;
-
   const playIcon = (
     <div className="bg-foreground/40 absolute inset-0 flex items-center justify-center">
       <PlayButton onPlay={handlePlay} />
@@ -36,21 +34,35 @@ const Trailer = ({ data, isActive }: IProps) => {
     <div className="bg-foreground relative aspect-video">
       {data?.resource_type === "video" ? (
         <>
-          <ReactPlayer
-            src={videoUrl}
-            playing={playing}
-            controls
-            light={data.thumbnail_url ?? true}
-            width="100%"
-            height="100%"
-            playIcon={playIcon}
-            config={{
-              youtube: {
-                autoplay: playing ? 1 : 0,
-                start: 0,
-              },
-            }}
-          />
+          {playing ? (
+            <YouTube
+              videoId={data.resource_value}
+              className="h-full w-full"
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: {
+                  autoplay: playing ? 1 : 0,
+                  start: 0,
+                  controls: 1,
+                },
+              }}
+            />
+          ) : (
+            <>
+              {playIcon}
+              <Image
+                src={
+                  data.thumbnail_url ||
+                  `https://img.youtube.com/vi/${data.resource_value}/hqdefault.jpg`
+                }
+                alt={data.name}
+                width={480}
+                height={270}
+                className="h-full w-full object-cover"
+              />
+            </>
+          )}
         </>
       ) : (
         <Image
