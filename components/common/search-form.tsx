@@ -18,7 +18,7 @@ const result = [
   "English Course",
 ];
 
-interface IProps extends ComponentProps<"form"> {
+interface IProps {
   className?: string;
 }
 

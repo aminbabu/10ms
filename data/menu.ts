@@ -128,6 +128,7 @@ export const navMenu: INavMenuItem[] = [
   },
   {
     key: "more",
+    url: "/more",
     items: [
       { key: "jobPreparation", url: "/job-preparation-courses" },
       { key: "blog", url: "/blog" },

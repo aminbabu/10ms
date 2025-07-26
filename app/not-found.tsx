@@ -43,8 +43,9 @@ export default function GlobalNotFound() {
                   Page Not Found
                 </h1>
                 <p className="text-muted-foreground">
-                  Sorry, we couldn't find the page you're looking for. The page
-                  might have been moved, deleted, or you entered the wrong URL.
+                  Sorry, we couldn&apos;t find the page you&apos;re looking for.
+                  The page might have been moved, deleted, or you entered the
+                  wrong URL.
                 </p>
               </div>
 
@@ -55,7 +56,7 @@ export default function GlobalNotFound() {
                     Go Home
                   </Link>
                 </Button>
-                <Button variant="outline" onClick={() => window.history.back()}>
+                <Button variant="outline" onClick={() => router.back()}>
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Go Back
                 </Button>

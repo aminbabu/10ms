@@ -1,7 +1,8 @@
 import Header from "@/components/layouts/header";
 import { routing } from "@/i18n/routing";
+import { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Geist_Mono, Inter } from "next/font/google";
 import { notFound } from "next/navigation";

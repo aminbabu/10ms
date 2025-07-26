@@ -11,15 +11,17 @@ import Sidebar from "@/components/pages/products/sidebar";
 import Summary from "@/components/pages/products/summary";
 import { IProduct } from "@/interfaces/product";
 import { getProduct } from "@/lib/api/products/get-product";
+import { Locale } from "@/lib/i18n";
 import { Metadata } from "next";
-import { Locale } from "next-intl";
 import { notFound } from "next/navigation";
 
 interface IProps {
   params: Promise<{ slug: string; locale: Locale }>;
 }
 
-export async function generateMetadata({ params }: IProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: IProps): Promise<Metadata | undefined> {
   try {
     const { slug, locale } = await params;
     const product: IProduct = await getProduct(slug, locale);

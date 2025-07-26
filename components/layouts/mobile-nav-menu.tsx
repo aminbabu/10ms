@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { INavMenuItem, navMenu } from "@/data/menu";
 import { DESKTOP_BREAKPOINT } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import { useMenuStore } from "@/store/use-menu";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -23,7 +24,11 @@ import { List, ListItem } from "../common/typography";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
-const MobileNavMenu = () => {
+interface IProps {
+  className?: string;
+}
+
+const MobileNavMenu = ({ className }: IProps) => {
   const t = useTranslations("navMenu");
   const isOpen = useMenuStore((state) => state.isOpen);
   const toggle = useMenuStore((state) => state.toggle);
@@ -48,7 +53,7 @@ const MobileNavMenu = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={toggle}>
-      <SheetContent side="left" className="w-full">
+      <SheetContent side="left" className={cn("w-full", className)}>
         <SheetHeader>
           <SheetTitle>{t("title")}</SheetTitle>
         </SheetHeader>

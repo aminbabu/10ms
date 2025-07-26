@@ -1,5 +1,5 @@
 import { routing } from "@/i18n/routing";
-import { Locale } from "next-intl";
+import { isLocale, Locale } from "@/lib/i18n";
 import { redirect } from "next/navigation";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 export default async function Home({ params }: Readonly<Props>) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale)) {
+  if (!isLocale(locale)) {
     return redirect(`/${routing.defaultLocale}/products/ielts-course`);
   }
 

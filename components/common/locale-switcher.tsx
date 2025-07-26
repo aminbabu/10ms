@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { Locale, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
 
@@ -23,12 +24,12 @@ const LocaleSwitcher = () => {
   };
 
   const onLocaleChange = () => {
-    const nextLocale = getNextLocale(locale);
+    const nextLocale = getNextLocale(locale as Locale);
 
     if (nextLocale === locale) return;
 
     startTransition(() => {
-      router.replace({ pathname, params }, { locale: nextLocale });
+      router.replace({ pathname, query: params }, { locale: nextLocale });
     });
   };
 
@@ -67,7 +68,7 @@ const LocaleSwitcher = () => {
           </clipPath>
         </defs>
       </svg>
-      {getNextLocale(locale) === "en" ? "EN" : "বাং"}
+      {getNextLocale(locale as Locale) === "en" ? "EN" : "বাং"}
       <span className="sr-only">Switch language</span>
     </Button>
   );
