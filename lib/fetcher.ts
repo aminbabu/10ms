@@ -14,7 +14,7 @@ export async function fetcher<T = unknown>(
   options: FetcherOptions = {},
 ): Promise<T> {
   const { headers, ...rest } = options;
-  const url = `${API_BASE_URL}/${endpoint}`;
+  const url = `${API_BASE_URL}${endpoint}`;
 
   try {
     const res = await fetch(url, {

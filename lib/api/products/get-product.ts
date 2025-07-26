@@ -4,10 +4,11 @@ import { fetcher } from "@/lib/fetcher";
 
 export async function getProduct(
   slug: string,
+  lang: string = "en",
   revalidate: number = 60,
 ): Promise<IProduct> {
   try {
-    const product = await fetcher<IProduct>(`products/${slug}?lang=en`, {
+    const product = await fetcher<IProduct>(`/products/${slug}?lang=${lang}`, {
       next: {
         revalidate,
         tags: ["product"],

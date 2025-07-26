@@ -15,13 +15,14 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface IProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   try {
-    const { slug } = await params;
-    const product: IProduct = await getProduct(slug);
+    const { slug, locale } = await params;
+
+    const product: IProduct = await getProduct(slug, locale);
 
     const openGraphData =
       product.seo?.defaultMeta?.reduce(
@@ -73,8 +74,8 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 
 export default async function ProductDetails({ params }: IProps) {
   try {
-    const { slug } = await params;
-    const product: IProduct = await getProduct(slug);
+    const { slug, locale } = await params;
+    const product: IProduct = await getProduct(slug, locale);
 
     if (!product) return notFound();
 
