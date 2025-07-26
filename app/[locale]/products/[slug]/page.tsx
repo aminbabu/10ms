@@ -12,16 +12,16 @@ import Summary from "@/components/pages/products/summary";
 import { IProduct } from "@/interfaces/product";
 import { getProduct } from "@/lib/api/products/get-product";
 import { Metadata } from "next";
+import { Locale } from "next-intl";
 import { notFound } from "next/navigation";
 
 interface IProps {
-  params: Promise<{ slug: string; locale: string }>;
+  params: Promise<{ slug: string; locale: Locale }>;
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   try {
     const { slug, locale } = await params;
-
     const product: IProduct = await getProduct(slug, locale);
 
     const openGraphData =
@@ -64,11 +64,6 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
     };
   } catch (error) {
     console.error("Metadata generation failed:", error);
-    return {
-      title: "IELTS Course",
-      description: "Explore the IELTS Course at 10 Minute School.",
-      keywords: ["IELTS Course", "IELTS Preparation", "IELTS Bangladesh"],
-    };
   }
 }
 
