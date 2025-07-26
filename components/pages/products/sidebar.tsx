@@ -50,7 +50,7 @@ const Sidebar = ({ ctaChecklist, media, className }: IProps) => {
             className="flex items-center gap-1 text-green-600 underline transition-colors hover:text-green-700"
           >
             <RiPhoneFill className="size-4" />
-            {t("contact.urlText")}
+            {t("contact.text")} ({t("contact.number")})
           </Link>
         </div>
       </div>

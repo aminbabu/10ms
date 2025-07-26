@@ -14,7 +14,8 @@
     },
     "contact": {
       "title": "To learn more about the course",
-      "urlText": "Call (16910)"
+      "text": "Call",
+      "number": "16910"
     }
   },
   "search": {
