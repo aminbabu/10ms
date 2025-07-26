@@ -35,8 +35,7 @@ const LocaleSwitcher = () => {
   return (
     <Button
       variant="outline"
-      size="sm"
-      className={cn({ "pointer-events-none": isPending })}
+      className={cn("size-8 md:w-auto", { "pointer-events-none": isPending })}
       onClick={onLocaleChange}
     >
       <svg
