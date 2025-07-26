@@ -6,14 +6,12 @@ import { routing } from "@/i18n/routing";
 import { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
-import { useParams } from "next/navigation";
 import { useTransition } from "react";
 
 const LocaleSwitcher = () => {
-  const locale = useLocale(); // Current locale
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
   const [isPending, startTransition] = useTransition();
 
   const getNextLocale = (currentLocale: Locale): Locale => {
@@ -29,7 +27,7 @@ const LocaleSwitcher = () => {
     if (nextLocale === locale) return;
 
     startTransition(() => {
-      router.replace({ pathname, query: params }, { locale: nextLocale });
+      router.replace({ pathname }, { locale: nextLocale });
     });
   };
 
