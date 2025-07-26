@@ -27,7 +27,7 @@ export default function Loading() {
             <SectionLoader />
             <SectionLoader />
           </div>
-          <div className="bg-background border-border -mt-60 hidden shrink-0 space-y-6 border p-1.5 shadow-sm md:sticky md:top-4 md:block md:basis-[345px] lg:basis-[400px]">
+          <div className="bg-background border-border -mt-60 hidden shrink-0 space-y-6 border p-1.5 shadow-sm md:sticky md:top-20 md:block md:basis-[345px] lg:basis-[400px]">
             <CarouselLoader />
             <CTAChecklistLoader />
           </div>
